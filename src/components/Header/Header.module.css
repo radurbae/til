@@ -41,10 +41,18 @@
     }
 
     .nav {
-        gap: var(--space-md);
+        gap: var(--space-sm);
     }
 
     .navLink {
         font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .headerContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
     }
 }
