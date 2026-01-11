@@ -9,59 +9,108 @@ c:I[68027,["/til_rads/_next/static/chunks/ff1a16fafef87110.js","/til_rads/_next/
 :HL["/til_rads/_next/static/chunks/7630ab44ff7479ea.css","style"]
 :HL["/til_rads/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/til_rads/_next/static/chunks/35d4d4a79852b37a.css","style"]
-0:{"P":null,"b":"d-j1xw2IH-k2hmMUY3Vzt","c":["","til","emotional-intelligence-daniel-goleman"],"q":"","i":false,"f":[[["",{"children":["til",{"children":[["slug","emotional-intelligence-daniel-goleman","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/til_rads/_next/static/chunks/7630ab44ff7479ea.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"id","className":"inter_2fe1ab3d-module__-T-KAq__variable","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/til_rads/_next/static/chunks/35d4d4a79852b37a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/til_rads/_next/static/chunks/796e69ae18b2784c.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
+0:{"P":null,"b":"AkF-TqTbSrjt2rtqVKgtx","c":["","til","emotional-intelligence-daniel-goleman"],"q":"","i":false,"f":[[["",{"children":["til",{"children":[["slug","emotional-intelligence-daniel-goleman","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/til_rads/_next/static/chunks/7630ab44ff7479ea.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"id","className":"inter_2fe1ab3d-module__-T-KAq__variable","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/til_rads/_next/static/chunks/35d4d4a79852b37a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/til_rads/_next/static/chunks/796e69ae18b2784c.js","async":true,"nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L8",null,{"children":"$L9"}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lb"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$c",[]],"S":true}
 d:I[22016,["/til_rads/_next/static/chunks/796e69ae18b2784c.js"],""]
-e:Ta94,<p>
-<h2>Tentang Buku</h2></p>
-<p><strong>Emotional Intelligence</strong> (1995) karya Daniel Goleman adalah buku yang mengubah cara kita memahami kecerdasan. Goleman berargumen bahwa IQ bukan satu-satunya penentu kesuksesan — <strong>kecerdasan emosional (EQ)</strong> sama pentingnya, bahkan lebih.</p>
-<h2>5 Komponen Kecerdasan Emosional</h2>
-<h3>1. Self-Awareness (Kesadaran Diri)</h3>
-Kemampuan mengenali emosi sendiri saat terjadi.
-<ul><li>Memahami perasaan dan dampaknya</li>
-<li>Mengetahui kekuatan dan kelemahan diri</li>
-<li>Percaya diri yang realistis</li>
+e:T35de,<p>
+Buku "Emotional Intelligence: Why It Can Matter More Than IQ" (1995) karya Daniel Goleman terdiri dari lima bagian yang mengupas tuntas konsep kecerdasan emosional dari berbagai sudut pandang — mulai dari dasar ilmiah dalam otak hingga penerapan praktis dalam kehidupan sehari-hari.</p>
+<hr>
+<h2>Bagian 1: Otak Emosional (The Emotional Brain)</h2>
+<h3>Dua Pikiran dalam Satu Kepala</h3>
+<p>Goleman membuka bukunya dengan argumen fundamental: manusia memiliki dua sistem pikiran yang beroperasi secara bersamaan. Pikiran rasional, yang berbasis di neokorteks — bagian otak yang berevolusi paling akhir — bertanggung jawab atas analisis, logika, dan perencanaan. Sementara itu, pikiran emosional berpusat di sistem limbik, khususnya amigdala — struktur kuno berbentuk almond yang sudah ada sejak nenek moyang reptil kita.</p>
+<p>Kedua sistem ini tidak selalu bekerja harmonis. Dalam keadaan normal, mereka berkolaborasi dengan baik: emosi memberikan informasi tentang pentingnya suatu situasi, sementara pikiran rasional menganalisis dan merumuskan respons yang tepat. Namun dalam situasi yang dipersepsikan sebagai ancaman, amigdala dapat "membajak" kendali dari neokorteks — sebuah fenomena yang Goleman sebut sebagai "amygdala hijack".</p>
+<h3>Pembajakan Emosional</h3>
+<p>"Amygdala hijack" menjelaskan mengapa orang cerdas bisa melakukan hal-hal bodoh dalam kemarahan, mengapa seseorang bisa mengatakan kata-kata yang disesali, atau mengapa keputusan impulsif sering bertentangan dengan kepentingan jangka panjang. Ketika amigdala mendeteksi ancaman — nyata atau tidak — ia memicu respons fight-or-flight secara instan, bahkan sebelum neokorteks selesai memproses informasi.</p>
+<p>Goleman menggunakan berbagai kasus nyata untuk mengilustrasikan konsep ini: dari tragedi kekerasan domestik hingga konflik di tempat kerja. Pesannya jelas: memahami mekanisme otak ini adalah langkah pertama untuk tidak menjadi budak emosi.</p>
+<h3>Evolusi Emosi</h3>
+<p>Buku ini juga menjelaskan mengapa emosi ada dan apa fungsinya. Dari perspektif evolusioner, emosi adalah sistem panduan yang telah teruji jutaan tahun. Rasa takut menjauhkan kita dari bahaya. Kemarahan memberi energi untuk mempertahankan diri. Kesedihan memperlambat kita agar bisa memproses kehilangan. Kebahagiaan mendorong kita mengulangi perilaku yang bermanfaat.</p>
+<p>Masalahnya, otak emosional kita berevolusi untuk dunia yang sangat berbeda — dunia di mana ancaman fisik langsung adalah hal sehari-hari. Di dunia modern, sinyal "bahaya" yang sama dipicu oleh email kasar dari atasan atau kemacetan lalu lintas — situasi yang tidak memerlukan respons fight-or-flight, tapi sering mendapatkannya.</p>
+<hr>
+<h2>Bagian 2: Hakikat Kecerdasan Emosional (The Nature of Emotional Intelligence)</h2>
+<h3>Keterbatasan IQ</h3>
+<p>Goleman menantang pandangan konvensional bahwa IQ adalah penentu utama kesuksesan. Ia menunjukkan riset yang membuktikan bahwa banyak orang dengan IQ tinggi gagal dalam kehidupan — karir mandek, hubungan berantakan, kesehatan mental terganggu — sementara orang dengan IQ "biasa" sering mencapai keberhasilan luar biasa.</p>
+<p>Apa yang membedakan? Goleman berargumen bahwa kecerdasan emosional — kemampuan mengenali, memahami, dan mengelola emosi — adalah faktor yang sering diabaikan namun sangat menentukan.</p>
+<h3>Lima Pilar Kecerdasan Emosional</h3>
+<p>Goleman mengidentifikasi lima komponen inti kecerdasan emosional:</p>
+<p><strong>Pertama, Kesadaran Diri (Self-Awareness).</strong> Ini adalah fondasi dari segalanya — kemampuan mengenali emosi saat ia muncul, bukan setelahnya. Orang dengan kesadaran diri tinggi mampu mengamati perasaan mereka tanpa larut di dalamnya. Mereka bisa berkata, "Saya sedang merasa cemas," dan dengan itu, mendapatkan jarak yang diperlukan untuk merespons dengan bijaksana.</p>
+<p>Kesadaran diri juga mencakup pemahaman akurat tentang kekuatan dan kelemahan sendiri, serta kepercayaan diri yang berbasis realitas — bukan kesombongan, bukan pula keraguan berlebihan.</p>
+<p><strong>Kedua, Pengelolaan Diri (Self-Regulation).</strong> Mengenali emosi tidak cukup; kita perlu mampu mengelolanya. Ini bukan tentang menekan perasaan — emosi yang ditekan cenderung meledak di tempat yang tidak tepat. Ini tentang memilih cara mengekspresikan dan merespons emosi.</p>
+<p>Pengelolaan diri mencakup kemampuan menenangkan diri saat cemas, menghibur diri saat sedih, dan menahan diri dari reaksi impulsif saat marah. Orang yang menguasai keterampilan ini bisa "berpikir sebelum bertindak" — memberi jeda antara stimulus dan respons.</p>
+<p><strong>Ketiga, Motivasi Internal.</strong> Kecerdasan emosional mencakup kemampuan memotivasi diri sendiri — mengarahkan emosi demi mencapai tujuan. Goleman membahas bagaimana optimisme, harapan, dan "flow" (kondisi optimal di mana tantangan seimbang dengan kemampuan) berperan dalam pencapaian.</p>
+<p>Yang krusial adalah perbedaan antara motivasi intrinsik dan ekstrinsik. Orang dengan motivasi internal tinggi tidak bergantung pada pujian atau imbalan eksternal. Mereka menemukan kepuasan dalam proses, bukan hanya hasil. Mereka juga memiliki resiliensi — kemampuan bangkit dari kegagalan dan terus maju.</p>
+<p>Goleman juga membahas riset terkenal "marshmallow test" oleh Walter Mischel. Anak-anak yang mampu menunda kepuasan (menahan diri tidak memakan marshmallow demi mendapat dua nanti) terbukti lebih sukses secara akademis dan profesional di masa dewasa. Kemampuan menunda kepuasan adalah prediksi kuat kesuksesan jangka panjang.</p>
+<p><strong>Keempat, Empati.</strong> Ini adalah kemampuan memahami apa yang dirasakan orang lain — bukan sekadar tahu bahwa mereka sedih, tapi merasakan nuansa kesedihan itu. Empati berbeda dari simpati; kita tidak harus setuju atau merasa kasihan, tapi mampu melihat dunia dari perspektif orang lain.</p>
+<p>Empati dimulai dari kemampuan membaca sinyal non-verbal: ekspresi wajah mikro, nada suara, postur tubuh. Orang dengan empati tinggi adalah "pendengar" dalam arti luas — mereka menangkap pesan yang tidak terucapkan.</p>
+<p><strong>Kelima, Keterampilan Sosial.</strong> Komponen terakhir adalah kemampuan mengelola hubungan dengan baik — berkomunikasi efektif, memengaruhi orang lain, menyelesaikan konflik, bekerja dalam tim, dan membangun ikatan yang bermakna.</p>
+<p>Goleman menjelaskan bahwa emosi itu menular. Dalam interaksi sosial, kita saling memengaruhi suasana hati satu sama lain — fenomena "emotional contagion". Orang yang menguasai keterampilan sosial mampu mengelola dinamika ini secara sadar.</p>
+<hr>
+<h2>Bagian 3: Kecerdasan Emosional dalam Praktik (Emotional Intelligence Applied)</h2>
+<h3>EQ dalam Hubungan Cinta</h3>
+<p>Goleman mengeksplorasi bagaimana kecerdasan emosional (atau ketiadaannya) memengaruhi hubungan romantis. Penelitian John Gottman dari University of Washington mampu memprediksi perceraian dengan akurasi 94% hanya dengan mengamati cara pasangan berdebat selama beberapa menit.</p>
+<p>Apa yang membedakan pasangan yang langgeng? Bukan ketiadaan konflik — semua pasangan berkonflik. Yang membedakan adalah cara mereka menangani konflik. Pasangan dengan EQ tinggi mampu:
+<ul><li>Mengangkat masalah tanpa menyerang karakter pasangan</li>
+<li>Mendengarkan perspektif pasangan dengan sungguh-sungguh</li>
+<li>Menenangkan diri dan pasangan ketika emosi memanas</li>
+<li>Menemukan kompromi yang menghormati kebutuhan kedua pihak</li>
 </ul>
-<h3>2. Self-Regulation (Pengendalian Diri)</h3>
-Kemampuan mengelola emosi dan impuls.
-<ul><li>Berpikir sebelum bertindak</li>
-<li>Menahan diri dari keputusan impulsif</li>
-<li>Tetap tenang dalam situasi sulit</li>
+Pola yang merusak mencakup kritik karakter (bukan perilaku), penghinaan, defensif, dan "stonewalling" — penarikan total dari interaksi.</p>
+<h3>EQ di Tempat Kerja</h3>
+<p>Di dunia profesional, kecerdasan emosional bukan sekadar bonus — ia adalah pembeda antara kinerja biasa dan luar biasa. Goleman menunjukkan riset yang membuktikan bahwa di level kepemimpinan, EQ menyumbang hingga 85-90% dari kompetensi yang membedakan pemimpin bintang dari yang rata-rata.</p>
+<p>Pemimpin dengan EQ tinggi mampu:
+<ul><li>Memahami motivasi dan kekhawatiran tim</li>
+<li>Memberikan feedback yang membangun tanpa merusak hubungan</li>
+<li>Mengelola konflik produktif</li>
+<li>Menciptakan lingkungan yang mendorong kreativitas dan kolaborasi</li>
+<li>Tetap tenang di bawah tekanan, memberikan stabilitas emosional bagi tim</li>
 </ul>
-<h3>3. Motivation (Motivasi)</h3>
-Dorongan internal untuk mencapai tujuan.
-<ul><li>Berorientasi pada pencapaian</li>
-<li>Optimis menghadapi kegagalan</li>
-<li>Komitmen pada tujuan jangka panjang</li>
+Goleman juga membahas biaya dari ketiadaan EQ di tempat kerja: produktivitas yang hilang akibat konflik, turnover tinggi, kesehatan mental karyawan yang terganggu, dan keputusan buruk yang dibuat dalam kemarahan atau kepanikan.</p>
+<h3>EQ dalam Kesehatan</h3>
+<p>Bagian ini juga membahas hubungan antara emosi dan kesehatan fisik. Stres kronis, kemarahan yang tidak terkelola, dan kecemasan berlebihan semuanya terkait dengan berbagai masalah kesehatan — dari penyakit jantung hingga sistem imun yang melemah.</p>
+<p>Sebaliknya, emosi positif, dukungan sosial, dan kemampuan mengelola stres terbukti memiliki efek protektif. Kecerdasan emosional, dengan demikian, bukan hanya soal kesuksesan sosial — ia juga soal kesehatan dan umur panjang.</p>
+<hr>
+<h2>Bagian 4: Jendela Kesempatan (Windows of Opportunity)</h2>
+<h3>Otak yang Berkembang</h3>
+<p>Bagian keempat mengeksplorasi bagaimana kecerdasan emosional berkembang — atau gagal berkembang — selama masa kanak-kanak. Goleman menjelaskan bahwa otak anak sangat plastis; pengalaman early childhood membentuk "cetak biru emosional" yang akan bertahan seumur hidup.</p>
+<p>Anak-anak tidak lahir dengan kemampuan mengelola emosi yang sudah jadi. Mereka belajar dari interaksi dengan pengasuh. Ketika orang tua merespons tangisan bayi dengan ketenangan dan pengertian, bayi belajar bahwa emosi bisa dikelola. Ketika orang tua mengabaikan atau bereaksi berlebihan, bayi belajar pola yang berbeda.</p>
+<h3>Pola Asuh dan EQ</h3>
+<p>Goleman membahas bagaimana gaya pengasuhan memengaruhi perkembangan kecerdasan emosional anak:</p>
+<p><strong>Pola asuh yang mendukung EQ:</strong>
+<ul><li>Mengenali dan memvalidasi emosi anak ("Kamu terlihat kecewa karena mainanmu rusak")</li>
+<li>Mengajarkan kosakata emosional</li>
+<li>Membantu anak menemukan cara sehat untuk mengekspresikan perasaan</li>
+<li>Menjadi contoh pengelolaan emosi yang baik</li>
 </ul>
-<h3>4. Empathy (Empati)</h3>
-Kemampuan memahami emosi orang lain.
-<ul><li>Mendengarkan dengan sungguh-sungguh</li>
-<li>Peka terhadap perasaan orang lain</li>
-<li>Memahami perspektif yang berbeda</li>
+<strong>Pola asuh yang menghambat EQ:</strong>
+<ul><li>Mengabaikan atau meminimalkan emosi anak ("Jangan cengeng")</li>
+<li>Menghukum ekspresi emosional</li>
+<li>Kehilangan kendali emosi sendiri di depan anak</li>
+<li>Tidak konsisten dalam respons</li>
 </ul>
-<h3>5. Social Skills (Keterampilan Sosial)</h3>
-Kemampuan mengelola hubungan dengan baik.
-<ul><li>Komunikasi yang efektif</li>
-<li>Manajemen konflik</li>
-<li>Membangun dan memelihara hubungan</li>
+<h3>Trauma dan Resiliensi</h3></p>
+<p>Goleman juga membahas dampak pengalaman traumatis pada perkembangan emosional. Anak yang mengalami kekerasan, penelantaran, atau kehilangan besar sering menunjukkan pola emosional yang terganggu — kewaspadaan berlebihan, kesulitan mengatur emosi, masalah dalam hubungan.</p>
+<p>Namun, pesannya tidak fatalistik. Otak tetap plastis sepanjang hidup. Dengan intervensi yang tepat — terapi, hubungan yang mendukung, pembelajaran keterampilan baru — pola yang tidak sehat bisa diubah. Ini memerlukan usaha sadar dan waktu, tapi transformasi dimungkinkan.</p>
+<hr>
+<h2>Bagian 5: Literasi Emosional (Emotional Literacy)</h2>
+<h3>Pendidikan yang Terabaikan</h3>
+<p>Bagian terakhir buku membahas apa yang Goleman sebut sebagai "literasi emosional" — pendidikan eksplisit tentang keterampilan sosial-emosional. Argumennya: jika kecerdasan emosional begitu penting untuk kesuksesan dan kesejahteraan, mengapa ia tidak diajarkan secara sistematis di sekolah?</p>
+<p>Goleman menunjukkan berbagai program pendidikan sosial-emosional yang telah diimplementasikan di sekolah-sekolah Amerika. Kurikulum ini mengajarkan:
+<ul><li>Mengenali dan memberi nama pada emosi</li>
+<li>Mengelola kemarahan dan impuls</li>
+<li>Menyelesaikan konflik secara damai</li>
+<li>Berempati dengan orang lain</li>
+<li>Bekerja sama dalam kelompok</li>
 </ul>
-<h2>Pelajaran Utama</h2>
-<blockquote>"Kecerdasan emosional adalah kemampuan untuk merasakan, memahami, dan secara efektif menerapkan kekuatan serta ketajaman emosi sebagai sumber energi, informasi, koneksi, dan pengaruh."</blockquote>
-<h3>Mengapa EQ Penting?</h3>
-<p>1. <strong>Karir</strong> — Orang dengan EQ tinggi cenderung menjadi pemimpin yang lebih baik
-2. <strong>Hubungan</strong> — EQ membantu membangun koneksi yang lebih dalam
-3. <strong>Kesehatan Mental</strong> — Pengelolaan emosi mengurangi stres dan kecemasan
-4. <strong>Pengambilan Keputusan</strong> — Emosi yang terkendali menghasilkan keputusan lebih baik</p>
-<h3>Cara Meningkatkan EQ</h3>
-<ul><li><strong>Journaling</strong> — Tulis perasaan untuk meningkatkan kesadaran diri</li>
-<li><strong>Pause</strong> — Berhenti sejenak sebelum bereaksi</li>
-<li><strong>Active Listening</strong> — Dengarkan untuk memahami, bukan untuk membalas</li>
-<li><strong>Feedback</strong> — Minta masukan dari orang lain tentang perilaku kita</li>
-</ul>
-<h2>Kesimpulan</h2>
-<p>Buku ini mengingatkan bahwa menjadi "pintar" saja tidak cukup. Kemampuan mengelola emosi diri dan memahami orang lain adalah keterampilan yang bisa dipelajari dan dikembangkan sepanjang hidup.</p>
-<p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5/5)
-</p>4:[["$","header",null,{"className":"Header-module__ldgnoG__header","children":["$","div",null,{"className":"container Header-module__ldgnoG__headerContent","children":[["$","$Ld",null,{"href":"/","className":"Header-module__ldgnoG__logo","children":"TIL"}],["$","nav",null,{"className":"Header-module__ldgnoG__nav","children":[["$","$Ld",null,{"href":"/categories","className":"Header-module__ldgnoG__navLink","children":"Categories"}],["$","$Ld",null,{"href":"/about","className":"Header-module__ldgnoG__navLink","children":"About"}]]}]]}]}],["$","main",null,{"className":"page-module__BJ4voq__main","children":["$","article",null,{"className":"container page-module__BJ4voq__article","children":[["$","header",null,{"className":"page-module__BJ4voq__articleHeader","children":[["$","$Ld",null,{"href":"/","className":"page-module__BJ4voq__backLink","children":"← Back to all posts"}],["$","div",null,{"className":"page-module__BJ4voq__meta","children":[["$","span",null,{"className":"page-module__BJ4voq__category","children":"Book"}],["$","span",null,{"className":"page-module__BJ4voq__date","children":"11 Jan 2026"}]]}],["$","h1",null,{"className":"page-module__BJ4voq__title","children":"Ringkasan Buku: Emotional Intelligence - Daniel Goleman"}],["$","div",null,{"className":"page-module__BJ4voq__tags","children":[["$","span","book-summary",{"className":"$undefined","children":["#","book-summary"]}],["$","span","psychology",{"className":"$undefined","children":["#","psychology"]}],["$","span","self-improvement",{"className":"$undefined","children":["#","self-improvement"]}]]}]]}],["$","div",null,{"className":"page-module__BJ4voq__content","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]}]]
+<h3>Hasil yang Mengejutkan</h3></p>
+<p>Riset menunjukkan bahwa program-program ini tidak hanya meningkatkan perilaku siswa — mereka juga meningkatkan prestasi akademis. Ketika anak-anak tidak lagi terdistraksi oleh emosi yang tidak terkelola, mereka bisa fokus belajar. Ketika mereka bisa bekerja sama dengan baik, proyek kelompok menjadi produktif. Ketika mereka bisa mengelola kecemasan ujian, performa mereka meningkat.</p>
+<p>Program literasi emosional juga mengurangi perilaku berisiko: kekerasan, penyalahgunaan zat, dan perilaku seksual tidak aman semuanya menurun di sekolah yang mengimplementasikan kurikulum sosial-emosional.</p>
+<h3>Biaya Ketidaktahuan</h3>
+<p>Goleman juga membahas biaya sosial dari "buta emosi" — generasi yang tidak diajarkan keterampilan mengelola emosi. Ia menghubungkan ini dengan berbagai masalah sosial: dari kekerasan remaja hingga depresi yang meningkat, dari kegagalan pernikahan hingga disfungsi di tempat kerja.</p>
+<p>Pesannya: literasi emosional bukan kemewahan atau tambahan opsional dalam pendidikan. Ia adalah fondasi yang diperlukan untuk kewarganegaraan yang bertanggung jawab dan kehidupan yang bermakna.</p>
+<hr>
+<h2>Kesimpulan: Kecerdasan yang Bisa Dipelajari</h2>
+<p>Pesan inti buku ini bersifat optimistik: berbeda dengan IQ yang relatif stabil, kecerdasan emosional adalah kumpulan keterampilan yang bisa dipelajari dan dikembangkan pada usia berapa pun. Tidak ada kata terlambat untuk meningkatkan kesadaran diri, belajar mengelola emosi dengan lebih baik, mengembangkan empati, dan memperdalam keterampilan sosial.</p>
+<p>Goleman menutup dengan visi masyarakat yang lebih cerdas secara emosional — di mana anak-anak diajarkan keterampilan emosional sejak dini, di mana tempat kerja menghargai EQ setara dengan kemampuan teknis, dan di mana setiap orang memiliki kesempatan untuk mengembangkan potensi emosional penuh mereka.</p>
+<p>Buku ini bukan sekadar membaca tentang psikologi — ia adalah undangan untuk perjalanan pengembangan diri seumur hidup.
+</p>4:[["$","header",null,{"className":"Header-module__ldgnoG__header","children":["$","div",null,{"className":"container Header-module__ldgnoG__headerContent","children":[["$","$Ld",null,{"href":"/","className":"Header-module__ldgnoG__logo","children":"TIL"}],["$","nav",null,{"className":"Header-module__ldgnoG__nav","children":[["$","$Ld",null,{"href":"/categories","className":"Header-module__ldgnoG__navLink","children":"Categories"}],["$","$Ld",null,{"href":"/about","className":"Header-module__ldgnoG__navLink","children":"About"}]]}]]}]}],["$","main",null,{"className":"page-module__BJ4voq__main","children":["$","article",null,{"className":"container page-module__BJ4voq__article","children":[["$","header",null,{"className":"page-module__BJ4voq__articleHeader","children":[["$","$Ld",null,{"href":"/","className":"page-module__BJ4voq__backLink","children":"← Back to all posts"}],["$","div",null,{"className":"page-module__BJ4voq__meta","children":[["$","span",null,{"className":"page-module__BJ4voq__category","children":"Book"}],["$","span",null,{"className":"page-module__BJ4voq__date","children":"11 Jan 2026"}]]}],["$","h1",null,{"className":"page-module__BJ4voq__title","children":"Emotional Intelligence - Daniel Goleman"}],["$","div",null,{"className":"page-module__BJ4voq__tags","children":[["$","span","book-summary",{"className":"$undefined","children":["#","book-summary"]}],["$","span","psychology",{"className":"$undefined","children":["#","psychology"]}],["$","span","self-improvement",{"className":"$undefined","children":["#","self-improvement"]}]]}]]}],["$","div",null,{"className":"page-module__BJ4voq__content","dangerouslySetInnerHTML":{"__html":"$e"}}]]}]}]]
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 7:null
-b:[["$","title","0",{"children":"Ringkasan Buku: Emotional Intelligence - Daniel Goleman | TIL"}],["$","meta","1",{"name":"description","content":"Tentang Buku    Emotional Intelligence   (1995) karya Daniel Goleman adalah buku yang mengubah cara kita memahami kecerdasan. Goleman berargumen bahwa..."}],["$","meta","2",{"name":"keywords","content":"today i learned,TIL,catatan,belajar,programming"}]]
+b:[["$","title","0",{"children":"Emotional Intelligence - Daniel Goleman | TIL"}],["$","meta","1",{"name":"description","content":"Buku \"Emotional Intelligence: Why It Can Matter More Than IQ\" (1995) karya Daniel Goleman terdiri dari lima bagian yang mengupas tuntas konsep kecerda..."}],["$","meta","2",{"name":"keywords","content":"today i learned,TIL,catatan,belajar,programming"}]]
