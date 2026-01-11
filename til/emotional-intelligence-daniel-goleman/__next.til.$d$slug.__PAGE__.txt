@@ -1,0 +1,60 @@
+1:"$Sreact.fragment"
+2:I[22016,["/til_rads/_next/static/chunks/796e69ae18b2784c.js"],""]
+7:I[97367,["/til_rads/_next/static/chunks/ff1a16fafef87110.js","/til_rads/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
+8:"$Sreact.suspense"
+:HL["/til_rads/_next/static/chunks/35d4d4a79852b37a.css","style"]
+3:Ta94,<p>
+<h2>Tentang Buku</h2></p>
+<p><strong>Emotional Intelligence</strong> (1995) karya Daniel Goleman adalah buku yang mengubah cara kita memahami kecerdasan. Goleman berargumen bahwa IQ bukan satu-satunya penentu kesuksesan — <strong>kecerdasan emosional (EQ)</strong> sama pentingnya, bahkan lebih.</p>
+<h2>5 Komponen Kecerdasan Emosional</h2>
+<h3>1. Self-Awareness (Kesadaran Diri)</h3>
+Kemampuan mengenali emosi sendiri saat terjadi.
+<ul><li>Memahami perasaan dan dampaknya</li>
+<li>Mengetahui kekuatan dan kelemahan diri</li>
+<li>Percaya diri yang realistis</li>
+</ul>
+<h3>2. Self-Regulation (Pengendalian Diri)</h3>
+Kemampuan mengelola emosi dan impuls.
+<ul><li>Berpikir sebelum bertindak</li>
+<li>Menahan diri dari keputusan impulsif</li>
+<li>Tetap tenang dalam situasi sulit</li>
+</ul>
+<h3>3. Motivation (Motivasi)</h3>
+Dorongan internal untuk mencapai tujuan.
+<ul><li>Berorientasi pada pencapaian</li>
+<li>Optimis menghadapi kegagalan</li>
+<li>Komitmen pada tujuan jangka panjang</li>
+</ul>
+<h3>4. Empathy (Empati)</h3>
+Kemampuan memahami emosi orang lain.
+<ul><li>Mendengarkan dengan sungguh-sungguh</li>
+<li>Peka terhadap perasaan orang lain</li>
+<li>Memahami perspektif yang berbeda</li>
+</ul>
+<h3>5. Social Skills (Keterampilan Sosial)</h3>
+Kemampuan mengelola hubungan dengan baik.
+<ul><li>Komunikasi yang efektif</li>
+<li>Manajemen konflik</li>
+<li>Membangun dan memelihara hubungan</li>
+</ul>
+<h2>Pelajaran Utama</h2>
+<blockquote>"Kecerdasan emosional adalah kemampuan untuk merasakan, memahami, dan secara efektif menerapkan kekuatan serta ketajaman emosi sebagai sumber energi, informasi, koneksi, dan pengaruh."</blockquote>
+<h3>Mengapa EQ Penting?</h3>
+<p>1. <strong>Karir</strong> — Orang dengan EQ tinggi cenderung menjadi pemimpin yang lebih baik
+2. <strong>Hubungan</strong> — EQ membantu membangun koneksi yang lebih dalam
+3. <strong>Kesehatan Mental</strong> — Pengelolaan emosi mengurangi stres dan kecemasan
+4. <strong>Pengambilan Keputusan</strong> — Emosi yang terkendali menghasilkan keputusan lebih baik</p>
+<h3>Cara Meningkatkan EQ</h3>
+<ul><li><strong>Journaling</strong> — Tulis perasaan untuk meningkatkan kesadaran diri</li>
+<li><strong>Pause</strong> — Berhenti sejenak sebelum bereaksi</li>
+<li><strong>Active Listening</strong> — Dengarkan untuk memahami, bukan untuk membalas</li>
+<li><strong>Feedback</strong> — Minta masukan dari orang lain tentang perilaku kita</li>
+</ul>
+<h2>Kesimpulan</h2>
+<p>Buku ini mengingatkan bahwa menjadi "pintar" saja tidak cukup. Kemampuan mengelola emosi diri dan memahami orang lain adalah keterampilan yang bisa dipelajari dan dikembangkan sepanjang hidup.</p>
+<p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5/5)
+</p>0:{"buildId":"d-j1xw2IH-k2hmMUY3Vzt","rsc":["$","$1","c",{"children":[[["$","header",null,{"className":"Header-module__ldgnoG__header","children":["$","div",null,{"className":"container Header-module__ldgnoG__headerContent","children":[["$","$L2",null,{"href":"/","className":"Header-module__ldgnoG__logo","children":"TIL"}],["$","nav",null,{"className":"Header-module__ldgnoG__nav","children":[["$","$L2",null,{"href":"/categories","className":"Header-module__ldgnoG__navLink","children":"Categories"}],["$","$L2",null,{"href":"/about","className":"Header-module__ldgnoG__navLink","children":"About"}]]}]]}]}],["$","main",null,{"className":"page-module__BJ4voq__main","children":["$","article",null,{"className":"container page-module__BJ4voq__article","children":[["$","header",null,{"className":"page-module__BJ4voq__articleHeader","children":[["$","$L2",null,{"href":"/","className":"page-module__BJ4voq__backLink","children":"← Back to all posts"}],["$","div",null,{"className":"page-module__BJ4voq__meta","children":[["$","span",null,{"className":"page-module__BJ4voq__category","children":"Book"}],["$","span",null,{"className":"page-module__BJ4voq__date","children":"11 Jan 2026"}]]}],["$","h1",null,{"className":"page-module__BJ4voq__title","children":"Ringkasan Buku: Emotional Intelligence - Daniel Goleman"}],["$","div",null,{"className":"page-module__BJ4voq__tags","children":[["$","span","book-summary",{"children":["#","book-summary"]}],["$","span","psychology",{"children":["#","psychology"]}],["$","span","self-improvement",{"children":["#","self-improvement"]}]]}]]}],["$","div",null,{"className":"page-module__BJ4voq__content","dangerouslySetInnerHTML":{"__html":"$3"}}]]}]}]],["$L4","$L5"],"$L6"]}],"loading":null,"isPartial":false}
+4:["$","link","0",{"rel":"stylesheet","href":"/til_rads/_next/static/chunks/35d4d4a79852b37a.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/til_rads/_next/static/chunks/796e69ae18b2784c.js","async":true}]
+6:["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]
+9:null
