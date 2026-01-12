@@ -163,7 +163,7 @@
 
     .articleHeader {
         margin-bottom: var(--space-lg);
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .title {
@@ -172,7 +172,7 @@
 
     .content {
         font-size: 0.875rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .content h2 {

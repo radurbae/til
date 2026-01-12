@@ -84,7 +84,7 @@
     }
 
     .heroContent {
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .heroTitle {
@@ -98,6 +98,6 @@
     .sectionHeader,
     .grid,
     .footer {
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 }
