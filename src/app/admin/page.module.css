@@ -142,4 +142,20 @@
     .row {
         grid-template-columns: 1fr;
     }
+
+    .page {
+        padding: var(--space-lg) 0;
+    }
+
+    .header {
+        padding: 0 1rem;
+    }
+
+    .form {
+        padding: 0 1rem;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
 }

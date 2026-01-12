@@ -42,8 +42,20 @@
     font-size: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    text-align: justify;
 }
 
 .tags {
     display: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .title {
+        font-size: 0.9375rem;
+    }
+
+    .excerpt {
+        font-size: 0.8125rem;
+    }
 }

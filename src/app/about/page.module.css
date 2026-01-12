@@ -45,3 +45,24 @@
     color: var(--text-primary);
     text-decoration: underline;
 }
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .page {
+        padding: var(--space-lg) 0;
+    }
+
+    .header {
+        margin-bottom: var(--space-lg);
+        padding: 0 1rem;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .content {
+        font-size: 0.875rem;
+        padding: 0 1rem;
+    }
+}

@@ -55,3 +55,23 @@
     font-size: 0.875rem;
     color: var(--text-muted);
 }
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+    .page {
+        padding: var(--space-lg) 0;
+    }
+
+    .header {
+        margin-bottom: var(--space-lg);
+        padding: 0 1rem;
+    }
+
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .list {
+        padding: 0 1rem;
+    }
+}
