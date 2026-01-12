@@ -83,6 +83,10 @@
         padding: var(--space-2xl) 0 var(--space-lg);
     }
 
+    .heroContent {
+        padding: 0 1rem;
+    }
+
     .heroTitle {
         font-size: 1.25rem;
     }
