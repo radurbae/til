@@ -94,15 +94,15 @@ export default function ChatWidget() {
             {isOpen && (
                 <div className={styles.chatWindow}>
                     <div className={styles.chatHeader}>
-                        <span className={styles.headerTitle}>💬 Tanya Rads AI</span>
-                        <span className={styles.headerSubtitle}>Tanyakan apapun tentang tulisan di sini</span>
+                        <span className={styles.headerTitle}>💬 Tanya Rads</span>
+                        <span className={styles.headerSubtitle}>Tanyakan apapun tentang tulisanku di sini</span>
                     </div>
 
                     <div className={styles.messagesContainer}>
                         {messages.length === 0 && (
                             <div className={styles.welcomeMessage}>
                                 <p>Halo! 👋</p>
-                                <p>Saya AI yang memiliki pengetahuan dari tulisan-tulisan di website ini. Silakan tanya apa saja tentang:</p>
+                                <p>Saya Rads, sebuah AI yang memiliki pengetahuan dari tulisan-tulisan di website ini. Silakan tanya apa saja tentang:</p>
                                 <ul>
                                     <li>Emotional Intelligence</li>
                                     <li>Learning How to Learn</li>
