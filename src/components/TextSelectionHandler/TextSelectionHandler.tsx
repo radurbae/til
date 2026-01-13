@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import QuoteCard from '../QuoteCard/QuoteCard';
 import styles from '../QuoteCard/QuoteCard.module.css';
 
@@ -12,8 +12,9 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
     const [selectedText, setSelectedText] = useState('');
     const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const selectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    const handleSelection = useCallback(() => {
+    const checkSelection = useCallback(() => {
         const selection = window.getSelection();
         const text = selection?.toString().trim();
 
@@ -21,11 +22,22 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
             const range = selection?.getRangeAt(0);
             const rect = range?.getBoundingClientRect();
 
-            if (rect) {
+            if (rect && rect.width > 0) {
                 setSelectedText(text);
+
+                // Calculate position - ensure it stays within viewport
+                const buttonWidth = 140;
+                const x = Math.max(
+                    buttonWidth / 2 + 10,
+                    Math.min(
+                        rect.left + rect.width / 2,
+                        window.innerWidth - buttonWidth / 2 - 10
+                    )
+                );
+
                 setButtonPosition({
-                    x: rect.left + rect.width / 2,
-                    y: rect.bottom + window.scrollY + 10
+                    x: x,
+                    y: rect.bottom + window.scrollY + 15
                 });
             }
         } else {
@@ -33,32 +45,82 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
         }
     }, []);
 
-    const handleClickOutside = useCallback(() => {
-        // Small delay to allow button click to register
+    const handleSelectionChange = useCallback(() => {
+        // Clear any pending timeout
+        if (selectionTimeoutRef.current) {
+            clearTimeout(selectionTimeoutRef.current);
+        }
+
+        // Delay to allow mobile selection to complete
+        selectionTimeoutRef.current = setTimeout(() => {
+            checkSelection();
+        }, 300);
+    }, [checkSelection]);
+
+    const handleTouchEnd = useCallback(() => {
+        // Longer delay for touch devices to allow selection handles to be used
+        if (selectionTimeoutRef.current) {
+            clearTimeout(selectionTimeoutRef.current);
+        }
+
+        selectionTimeoutRef.current = setTimeout(() => {
+            checkSelection();
+        }, 500);
+    }, [checkSelection]);
+
+    const handleMouseUp = useCallback(() => {
+        // Shorter delay for desktop
+        if (selectionTimeoutRef.current) {
+            clearTimeout(selectionTimeoutRef.current);
+        }
+
+        selectionTimeoutRef.current = setTimeout(() => {
+            checkSelection();
+        }, 100);
+    }, [checkSelection]);
+
+    const handleClickOutside = useCallback((e: MouseEvent | TouchEvent) => {
+        // Check if clicking the button itself
+        const target = e.target as HTMLElement;
+        if (target.closest(`.${styles.selectionButton}`)) {
+            return;
+        }
+
+        // Delay to allow button click to register
         setTimeout(() => {
             const selection = window.getSelection();
             if (!selection?.toString().trim()) {
                 setButtonPosition(null);
             }
-        }, 100);
+        }, 200);
     }, []);
 
     useEffect(() => {
-        document.addEventListener('mouseup', handleSelection);
-        document.addEventListener('touchend', handleSelection);
+        // Use selectionchange for better mobile support
+        document.addEventListener('selectionchange', handleSelectionChange);
+        document.addEventListener('mouseup', handleMouseUp);
+        document.addEventListener('touchend', handleTouchEnd);
         document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleClickOutside);
 
         return () => {
-            document.removeEventListener('mouseup', handleSelection);
-            document.removeEventListener('touchend', handleSelection);
+            document.removeEventListener('selectionchange', handleSelectionChange);
+            document.removeEventListener('mouseup', handleMouseUp);
+            document.removeEventListener('touchend', handleTouchEnd);
             document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [handleSelection, handleClickOutside]);
+            document.removeEventListener('touchstart', handleClickOutside);
 
-    const handleCreateQuote = () => {
+            if (selectionTimeoutRef.current) {
+                clearTimeout(selectionTimeoutRef.current);
+            }
+        };
+    }, [handleSelectionChange, handleMouseUp, handleTouchEnd, handleClickOutside]);
+
+    const handleCreateQuote = (e: React.MouseEvent | React.TouchEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
         setIsModalOpen(true);
         setButtonPosition(null);
-        window.getSelection()?.removeAllRanges();
     };
 
     return (
@@ -67,10 +129,12 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
                 <button
                     className={styles.selectionButton}
                     style={{
-                        left: `${Math.max(80, Math.min(buttonPosition.x - 60, window.innerWidth - 180))}px`,
-                        top: `${buttonPosition.y}px`
+                        left: `${buttonPosition.x}px`,
+                        top: `${buttonPosition.y}px`,
+                        transform: 'translateX(-50%)'
                     }}
                     onClick={handleCreateQuote}
+                    onTouchEnd={handleCreateQuote}
                 >
                     📷 Buat Quote
                 </button>
