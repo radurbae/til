@@ -2,7 +2,22 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
     try {
-        const { title, category, tags, content, password } = await request.json();
+        const body = await request.json();
+        const { action, password } = body;
+
+        // Handle login action
+        if (action === 'login') {
+            if (password !== process.env.ADMIN_PASSWORD) {
+                return NextResponse.json(
+                    { error: 'Password salah' },
+                    { status: 401 }
+                );
+            }
+            return NextResponse.json({ success: true });
+        }
+
+        // Handle create article action
+        const { title, category, tags, content } = body;
 
         // Simple password protection
         if (password !== process.env.ADMIN_PASSWORD) {
@@ -31,11 +46,18 @@ export async function POST(request: NextRequest) {
         // Format date
         const date = new Date().toISOString().split('T')[0];
 
+        // Normalize category (capitalize first letter of each word)
+        const normalizedCategory = category
+            ? category.trim().split(' ').map((word: string) =>
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(' ')
+            : 'TIL';
+
         // Create frontmatter
         const frontmatter = `---
 title: "${title}"
 date: ${date}
-category: ${category || 'TIL'}
+category: ${normalizedCategory}
 tags:
 ${tags ? tags.split(',').map((t: string) => `  - ${t.trim()}`).join('\n') : '  - til'}
 ---
