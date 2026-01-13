@@ -1,0 +1,158 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal {
+    background: var(--background);
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 24px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--surface);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background: var(--border);
+    color: var(--text-primary);
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-right: 40px;
+}
+
+.previewContainer {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #000;
+}
+
+.canvas {
+    display: none;
+}
+
+.preview {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.downloadButton,
+.copyButton {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.downloadButton {
+    background: var(--text-primary);
+    color: var(--background);
+}
+
+.downloadButton:hover {
+    opacity: 0.9;
+}
+
+.copyButton {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.copyButton:hover {
+    background: var(--border);
+}
+
+/* Selection Button */
+.selectionButton {
+    position: fixed;
+    padding: 10px 16px;
+    background: var(--text-primary);
+    color: var(--background);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    animation: fadeIn 0.2s ease;
+}
+
+.selectionButton:hover {
+    opacity: 0.9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .modal {
+        max-height: 100vh;
+        height: 100%;
+        border-radius: 0;
+        padding: 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}

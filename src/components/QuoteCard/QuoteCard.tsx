@@ -1,0 +1,186 @@
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
+import styles from './QuoteCard.module.css';
+
+interface QuoteCardProps {
+    quote: string;
+    source: string;
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export default function QuoteCard({ quote, source, isOpen, onClose }: QuoteCardProps) {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [imageUrl, setImageUrl] = useState<string>('');
+
+    useEffect(() => {
+        if (!isOpen || !canvasRef.current) return;
+
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // Canvas size (optimized for social sharing)
+        const width = 1200;
+        const height = 630;
+        canvas.width = width;
+        canvas.height = height;
+
+        // Background gradient
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, '#1a1a2e');
+        gradient.addColorStop(1, '#16213e');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        // Add subtle pattern
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+        for (let i = 0; i < width; i += 40) {
+            for (let j = 0; j < height; j += 40) {
+                ctx.fillRect(i, j, 1, 1);
+            }
+        }
+
+        // Quote marks decoration
+        ctx.font = 'bold 200px Georgia';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.fillText('"', 40, 180);
+        ctx.fillText('"', width - 160, height - 60);
+
+        // Draw quote text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '600 36px system-ui, -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // Word wrap the quote
+        const maxWidth = width - 200;
+        const lineHeight = 52;
+        const words = quote.split(' ');
+        const lines: string[] = [];
+        let currentLine = '';
+
+        words.forEach(word => {
+            const testLine = currentLine + (currentLine ? ' ' : '') + word;
+            const metrics = ctx.measureText(testLine);
+            if (metrics.width > maxWidth && currentLine) {
+                lines.push(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = testLine;
+            }
+        });
+        if (currentLine) lines.push(currentLine);
+
+        // Calculate starting Y position to center text
+        const totalTextHeight = lines.length * lineHeight;
+        let startY = (height - totalTextHeight) / 2 - 20;
+
+        // Draw each line
+        lines.forEach((line, index) => {
+            ctx.fillText(`"${line}"`, width / 2, startY + (index + 0.5) * lineHeight);
+        });
+        // Remove quotes from middle lines, add only at start and end
+        if (lines.length > 0) {
+            ctx.clearRect(0, 0, width, height);
+            // Redraw background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+            for (let i = 0; i < width; i += 40) {
+                for (let j = 0; j < height; j += 40) {
+                    ctx.fillRect(i, j, 1, 1);
+                }
+            }
+            ctx.font = 'bold 200px Georgia';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.fillText('"', 40, 180);
+            ctx.fillText('"', width - 160, height - 60);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '600 36px system-ui, -apple-system, sans-serif';
+            ctx.textAlign = 'center';
+            lines.forEach((line, index) => {
+                ctx.fillText(line, width / 2, startY + (index + 0.5) * lineHeight);
+            });
+        }
+
+        // Source/attribution
+        ctx.font = '400 24px system-ui, -apple-system, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        const sourceY = startY + totalTextHeight + 50;
+        ctx.fillText(`— ${source}`, width / 2, sourceY);
+
+        // Branding
+        ctx.font = '500 20px system-ui, -apple-system, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.textAlign = 'right';
+        ctx.fillText('TIL by Rads', width - 60, height - 40);
+
+        // Decorative line
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(100, height - 80);
+        ctx.lineTo(width - 100, height - 80);
+        ctx.stroke();
+
+        // Generate image URL
+        setImageUrl(canvas.toDataURL('image/png'));
+    }, [isOpen, quote, source]);
+
+    const handleDownload = () => {
+        if (!imageUrl) return;
+        const link = document.createElement('a');
+        link.download = `quote-${Date.now()}.png`;
+        link.href = imageUrl;
+        link.click();
+    };
+
+    const handleCopyToClipboard = async () => {
+        if (!canvasRef.current) return;
+        try {
+            const blob = await new Promise<Blob>((resolve) => {
+                canvasRef.current!.toBlob((blob) => {
+                    if (blob) resolve(blob);
+                }, 'image/png');
+            });
+            await navigator.clipboard.write([
+                new ClipboardItem({ 'image/png': blob })
+            ]);
+            alert('Gambar berhasil disalin ke clipboard!');
+        } catch {
+            alert('Gagal menyalin gambar. Coba download langsung.');
+        }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+        <div className={styles.overlay} onClick={onClose}>
+            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+                <button className={styles.closeButton} onClick={onClose}>
+                    ×
+                </button>
+                <h3 className={styles.title}>Preview Quote</h3>
+
+                <div className={styles.previewContainer}>
+                    <canvas ref={canvasRef} className={styles.canvas} />
+                    {imageUrl && (
+                        <img src={imageUrl} alt="Quote preview" className={styles.preview} />
+                    )}
+                </div>
+
+                <div className={styles.actions}>
+                    <button onClick={handleDownload} className={styles.downloadButton}>
+                        📥 Download
+                    </button>
+                    <button onClick={handleCopyToClipboard} className={styles.copyButton}>
+                        📋 Copy
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}

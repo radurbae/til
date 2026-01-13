@@ -3,6 +3,7 @@ import { getTilBySlug, getAllSlugs } from "@/lib/til";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
+import TextSelectionHandler from "@/components/TextSelectionHandler/TextSelectionHandler";
 
 // Generate static params for all TIL posts
 export async function generateStaticParams() {
@@ -133,6 +134,8 @@ export default async function TilPage({
                     />
                 </article>
             </main>
+            <TextSelectionHandler articleTitle={til.title} />
         </>
     );
 }
+
