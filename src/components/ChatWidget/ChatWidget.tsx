@@ -102,12 +102,7 @@ export default function ChatWidget() {
                         {messages.length === 0 && (
                             <div className={styles.welcomeMessage}>
                                 <p>Halo! 👋</p>
-                                <p>Saya Rads, sebuah AI yang memiliki pengetahuan dari tulisan-tulisan di website ini. Silakan tanya apa saja tentang:</p>
-                                <ul>
-                                    <li>Emotional Intelligence</li>
-                                    <li>Learning How to Learn</li>
-                                    <li>Thinking Fast and Slow</li>
-                                </ul>
+                                <p>Saya Rads, sebuah AI yang memiliki pengetahuan dari tulisan-tulisan di website ini. Silakan tanya apa saja tentang tulisan-tulisan di website ini</p>
                             </div>
                         )}
                         {messages.map((msg, index) => (
