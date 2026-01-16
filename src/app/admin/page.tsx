@@ -4,6 +4,13 @@ import Header from "@/components/Header/Header";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import styles from "./page.module.css";
+import dynamic from "next/dynamic";
+
+// Dynamic import to avoid SSR issues with TipTap
+const RichTextEditor = dynamic(
+    () => import("@/components/RichTextEditor/RichTextEditor"),
+    { ssr: false, loading: () => <div style={{ padding: '1rem', color: '#666' }}>Loading editor...</div> }
+);
 
 interface Article {
     slug: string;
@@ -545,14 +552,11 @@ export default function AdminPage() {
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label htmlFor="content">Konten (Markdown)</label>
-                                        <textarea
-                                            id="content"
-                                            value={content}
-                                            onChange={(e) => setContent(e.target.value)}
-                                            placeholder="Tulis konten dalam format Markdown..."
-                                            rows={20}
-                                            required
+                                        <label>Konten</label>
+                                        <RichTextEditor
+                                            content={content}
+                                            onChange={setContent}
+                                            placeholder="Mulai menulis artikel..."
                                         />
                                     </div>
 
@@ -617,13 +621,11 @@ export default function AdminPage() {
                                     </div>
 
                                     <div className={styles.field}>
-                                        <label htmlFor="editContent">Konten (Markdown)</label>
-                                        <textarea
-                                            id="editContent"
-                                            value={editingArticle.content || ""}
-                                            onChange={(e) => setEditingArticle({ ...editingArticle, content: e.target.value })}
-                                            rows={20}
-                                            required
+                                        <label>Konten</label>
+                                        <RichTextEditor
+                                            content={editingArticle.content || ""}
+                                            onChange={(newContent) => setEditingArticle({ ...editingArticle, content: newContent })}
+                                            placeholder="Edit konten artikel..."
                                         />
                                     </div>
 
