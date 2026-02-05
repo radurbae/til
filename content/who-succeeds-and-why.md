@@ -13,7 +13,7 @@ I came across a video by Professor Jiang on YouTube that contains his lecture fo
 
 Back then, an experiment was conducted by Walter Mitchell, it's a popular experiment called "Marshmallow Test" which involved some kids around four years old and five years old to take part. They would be given a marshmallow each, and they promised them to add one more marshmallow if the kids could wait for a little longer. Later on, he followed the kids in their lives and found out that the kids who were able to resist the urge to eat a marshmallow to get more later have a better life than the kids who do the opposite.
 
-They called it "Delayed Gratification", or we can simply call it Self-Control, signs that the kids who can control themselves can do long-term planning and have good emotional regulation. This concluded the first characteristic of successful people, self-control.
+They called it "Delayed Gratification", or we can simply call it Self-Control, signs that the kids who are able to control themselves have an ability to do long-term planning and have good emotional regulation. This concluded the first characteristic of successful people, self-control.
 
 Second, Carol Dwight wrote a book titled Mindset, and found out there are two types of mindsets: Growth and Fixed Mindset. A growth mindset means that if people stumble upon something or fail at something, they will think that this is their chance to grow and never give up, no matter what the outcome will be. The opposite, a fixed mindset, means a different reaction; they just give up, nothing else.
 
@@ -21,7 +21,7 @@ In simpler words, it's Resilience. The ability to resist any condition they face
 
 Third, the book by K. Anders Ericsson titled Peak states that people who can achieve the pinnacle of something, or success, have the same trait. It was Deliberate Practice, or they practice strategically. What are the goals? How to achieve it? And how to improve it?. Basically, we can call it Self-Reflection or Self-Assessment.
 
-It has relations with an experiment conducted by psychologists Dunning and Kruger back then. They assess some people on IQ tests. After the test, they asked the people about the prediction of their result, and found out later that the lowest performers assessed their result was higher than their ability. The stupid one lacks metacognitive abilities, which means they don't have Self-Assessment. And the opposite, the top performers answered that their result was slightly lower than what they actually could have. Which turns out to be the opposite of the stupid one.
+It has relations with an experiment conducted by psychologists Dunning and Kruger back then. They assess some people on IQ tests. After the test, they asked the people about the prediction of their result, and found out later that the lowest performers assessed their result was higher than their ability. The stupid one lacks metacognitive abilities, which means they don't have Self-Assessment. And the opposite, the top performers answered that their result was slightly lower than what they actually could. Which turns out to be the opposite of the stupid one.
 
 There is a saying that the hardest part of being a student is assessing yourself properly. To know exactly where you stand and how to improve. Those who are stupid are often the most confident in the world.
 
