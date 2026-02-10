@@ -13,6 +13,67 @@ interface RichTextEditorProps {
     placeholder?: string;
 }
 
+function markdownToHtml(markdown: string): string {
+    let html = markdown.replace(/\r\n/g, '\n').trim();
+
+    // Headers
+    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+
+    // Code blocks
+    html = html.replace(
+        /```(\w+)?\n([\s\S]*?)```/g,
+        (_match: string, lang: string, code: string) => `<pre><code class="language-${lang || ''}">${code}</code></pre>`
+    );
+
+    // Lists
+    html = html.replace(/^\s*[-*+] (.+)$/gm, '<li data-list="ul">$1</li>');
+    html = html.replace(/^\s*\d+\. (.+)$/gm, '<li data-list="ol">$1</li>');
+    html = html.replace(/(<li data-list="ul">.*<\/li>\n?)+/g, (listMatch: string) => {
+        return `<ul>${listMatch.replace(/ data-list="ul"/g, '')}</ul>`;
+    });
+    html = html.replace(/(<li data-list="ol">.*<\/li>\n?)+/g, (listMatch: string) => {
+        return `<ol>${listMatch.replace(/ data-list="ol"/g, '')}</ol>`;
+    });
+
+    // Blockquotes
+    html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+
+    // Horizontal rules
+    html = html.replace(/^---$/gm, '<hr>');
+
+    // Inline styles
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // Paragraphs
+    if (!html) {
+        return '<p></p>';
+    }
+
+    html = html
+        .split('\n\n')
+        .map((block: string) => {
+            if (
+                block.startsWith('<h') ||
+                block.startsWith('<ul') ||
+                block.startsWith('<ol') ||
+                block.startsWith('<pre') ||
+                block.startsWith('<blockquote') ||
+                block.startsWith('<hr')
+            ) {
+                return block;
+            }
+            return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+        })
+        .join('\n');
+
+    return html;
+}
+
 // Convert TipTap HTML to Markdown
 function htmlToMarkdown(html: string): string {
     let md = html;
@@ -133,9 +194,13 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
 
     // Set initial content
     useEffect(() => {
-        if (editor && content && !editor.getText().trim()) {
-            // If content is markdown, we could convert it, but for now just set it
-            editor.commands.setContent(content);
+        if (!editor) return;
+
+        const targetMarkdown = (content || "").replace(/\r\n/g, "\n").trim();
+        const currentMarkdown = htmlToMarkdown(editor.getHTML()).replace(/\r\n/g, "\n").trim();
+
+        if (targetMarkdown !== currentMarkdown) {
+            editor.commands.setContent(markdownToHtml(content || ""), { emitUpdate: false });
         }
     }, [editor, content]);
 
