@@ -1,5 +1,4 @@
 import Header from "@/components/Header/Header";
-import Text from "@/components/I18n/Text";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -16,21 +15,22 @@ export default function AboutPage() {
                 <div className={`container ${styles.page}`}>
                     <div className={styles.header}>
                         <Link href="/" className={styles.backLink}>
-                            <Text id="about.back" />
+                            ← Back
                         </Link>
-                        <h1 className={styles.title}>
-                            <Text id="about.title" />
-                        </h1>
+                        <h1 className={styles.title}>About</h1>
                     </div>
                     <div className={styles.content}>
                         <p>
-                            <Text id="about.p1" />
+                            TIL (Today I Learned) adalah kumpulan catatan singkat tentang
+                            hal-hal yang saya pelajari setiap hari.
                         </p>
                         <p>
-                            <Text id="about.p2" />
+                            Setiap catatan berisi pembelajaran kecil yang mungkin berguna
+                            untuk referensi di masa depan atau bermanfaat bagi orang lain.
                         </p>
                         <p>
-                            <Text id="about.p3" />
+                            Website ini dibangun dengan Next.js dan di-host sebagai proyek
+                            open source.
                         </p>
                     </div>
                 </div>

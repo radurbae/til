@@ -3,15 +3,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import QuoteCard from '../QuoteCard/QuoteCard';
 import styles from '../QuoteCard/QuoteCard.module.css';
-import { useAppSettings } from '@/components/AppSettings/AppSettingsProvider';
-import { t } from '@/lib/i18n';
 
 interface TextSelectionHandlerProps {
     articleTitle: string;
 }
 
 export default function TextSelectionHandler({ articleTitle }: TextSelectionHandlerProps) {
-    const { language } = useAppSettings();
     const [selectedText, setSelectedText] = useState('');
     const [buttonPosition, setButtonPosition] = useState<{ x: number; y: number } | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +25,6 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
             if (rect && rect.width > 0) {
                 setSelectedText(text);
 
-                // Calculate position - ensure it stays within viewport
                 const buttonWidth = 180;
                 const x = Math.max(
                     buttonWidth / 2 + 10,
@@ -49,19 +45,16 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
     }, []);
 
     const handleSelectionChange = useCallback(() => {
-        // Clear any pending timeout
         if (selectionTimeoutRef.current) {
             clearTimeout(selectionTimeoutRef.current);
         }
 
-        // Delay to allow mobile selection to complete
         selectionTimeoutRef.current = setTimeout(() => {
             checkSelection();
         }, 300);
     }, [checkSelection]);
 
     const handleTouchEnd = useCallback(() => {
-        // Longer delay for touch devices to allow selection handles to be used
         if (selectionTimeoutRef.current) {
             clearTimeout(selectionTimeoutRef.current);
         }
@@ -72,7 +65,6 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
     }, [checkSelection]);
 
     const handleMouseUp = useCallback(() => {
-        // Shorter delay for desktop
         if (selectionTimeoutRef.current) {
             clearTimeout(selectionTimeoutRef.current);
         }
@@ -83,13 +75,11 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
     }, [checkSelection]);
 
     const handleClickOutside = useCallback((e: MouseEvent | TouchEvent) => {
-        // Check if clicking the button itself
         const target = e.target as HTMLElement;
         if (target.closest(`.${styles.selectionButton}`)) {
             return;
         }
 
-        // Delay to allow button click to register
         setTimeout(() => {
             const selection = window.getSelection();
             if (!selection?.toString().trim()) {
@@ -99,7 +89,6 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
     }, []);
 
     useEffect(() => {
-        // Use selectionchange for better mobile support
         document.addEventListener('selectionchange', handleSelectionChange);
         document.addEventListener('mouseup', handleMouseUp);
         document.addEventListener('touchend', handleTouchEnd);
@@ -139,7 +128,7 @@ export default function TextSelectionHandler({ articleTitle }: TextSelectionHand
                     onClick={handleCreateQuote}
                     onTouchEnd={handleCreateQuote}
                 >
-                    📷 {t(language, 'quote.selectionButton')}
+                    📷 Buat Quote
                 </button>
             )}
 

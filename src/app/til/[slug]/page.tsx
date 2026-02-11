@@ -1,18 +1,16 @@
 import Header from "@/components/Header/Header";
-import Text from "@/components/I18n/Text";
-import LocalizedArticle from "@/components/LocalizedArticle/LocalizedArticle";
+import TextSelectionHandler from "@/components/TextSelectionHandler/TextSelectionHandler";
+import { parseMarkdown } from "@/lib/markdown";
 import { getTilBySlug, getAllSlugs } from "@/lib/til";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-// Generate static params for all TIL posts
 export async function generateStaticParams() {
     const slugs = getAllSlugs();
     return slugs.map((slug) => ({ slug }));
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({
     params,
 }: {
@@ -43,6 +41,8 @@ export default async function TilPage({
         notFound();
     }
 
+    const htmlContent = parseMarkdown(til.content);
+
     return (
         <>
             <Header />
@@ -50,25 +50,30 @@ export default async function TilPage({
                 <article className={`container ${styles.article}`}>
                     <header className={styles.articleHeader}>
                         <Link href="/" className={styles.backLink}>
-                            <Text id="til.backAllPosts" />
+                            ← Back to all posts
                         </Link>
                         <div className={styles.meta}>
                             <span className={styles.category}>{til.category}</span>
                             <span className={styles.date}>{til.date}</span>
                         </div>
+                        <h1 className={styles.title}>{til.title}</h1>
+                        {til.tags.length > 0 && (
+                            <div className={styles.tags}>
+                                {til.tags.map((tag) => (
+                                    <span key={tag} className={styles.tag}>
+                                        #{tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </header>
-                    <LocalizedArticle
-                        slug={til.slug}
-                        title={til.title}
-                        content={til.content}
-                        tags={til.tags}
-                        titleClassName={styles.title}
-                        tagsClassName={styles.tags}
-                        tagClassName={styles.tag}
-                        contentClassName={styles.content}
+                    <div
+                        className={styles.content}
+                        dangerouslySetInnerHTML={{ __html: htmlContent }}
                     />
                 </article>
             </main>
+            <TextSelectionHandler articleTitle={til.title} />
         </>
     );
 }

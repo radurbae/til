@@ -37,35 +37,6 @@
     gap: var(--space-sm);
 }
 
-.languageSwitch {
-    display: inline-flex;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--background-secondary);
-}
-
-.languageButton {
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.4rem 0.55rem;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.languageButton:hover {
-    color: var(--text-primary);
-    background: var(--surface-hover);
-}
-
-.activeLanguage {
-    background: var(--text-primary);
-    color: var(--background);
-}
-
 .themeButton {
     border: 1px solid var(--border);
     background: var(--background-secondary);
@@ -114,11 +85,6 @@
     .controls {
         margin-left: auto;
         gap: 0.35rem;
-    }
-
-    .languageButton {
-        font-size: 0.68rem;
-        padding: 0.35rem 0.45rem;
     }
 
     .themeButton {

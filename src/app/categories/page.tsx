@@ -1,5 +1,4 @@
 import Header from "@/components/Header/Header";
-import Text from "@/components/I18n/Text";
 import { getAllTils } from "@/lib/til";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -12,7 +11,6 @@ export const metadata = {
 export default function CategoriesPage() {
     const tils = getAllTils();
 
-    // Group by category and count
     const categoryMap = new Map<string, number>();
     tils.forEach((til) => {
         const count = categoryMap.get(til.category) || 0;
@@ -30,11 +28,9 @@ export default function CategoriesPage() {
                 <div className={`container ${styles.page}`}>
                     <div className={styles.header}>
                         <Link href="/" className={styles.backLink}>
-                            <Text id="categories.back" />
+                            ← Back
                         </Link>
-                        <h1 className={styles.title}>
-                            <Text id="categories.title" />
-                        </h1>
+                        <h1 className={styles.title}>Categories</h1>
                     </div>
                     <div className={styles.list}>
                         {categories.map(([name, count]) => (
