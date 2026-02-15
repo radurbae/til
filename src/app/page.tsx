@@ -31,6 +31,7 @@ export default function Home() {
                                 title={til.title}
                                 excerpt={til.excerpt}
                                 date={til.date}
+                                language={til.language}
                                 category={til.category}
                                 tags={til.tags}
                             />

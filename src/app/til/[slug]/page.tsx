@@ -57,6 +57,7 @@ export default async function TilPage({
                             ← Back to all posts
                         </Link>
                         <div className={styles.meta}>
+                            <span className={styles.language}>{til.language}</span>
                             <span className={styles.category}>{til.category}</span>
                             <span className={styles.date}>{til.date}</span>
                         </div>

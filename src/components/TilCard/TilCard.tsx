@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TilLanguage } from "@/lib/til";
 import styles from "./TilCard.module.css";
 
 export interface TilCardProps {
@@ -6,6 +7,7 @@ export interface TilCardProps {
     title: string;
     excerpt: string;
     date: string;
+    language: TilLanguage;
     category: string;
     tags?: string[];
 }
@@ -15,12 +17,14 @@ export default function TilCard({
     title,
     excerpt,
     date,
+    language,
     category,
     tags,
 }: TilCardProps) {
     return (
         <Link href={`/til/${slug}`} className={styles.card}>
             <div className={styles.meta}>
+                <span className={styles.language}>{language}</span>
                 <span className={styles.category}>{category}</span>
                 <span className={styles.date}>{date}</span>
             </div>

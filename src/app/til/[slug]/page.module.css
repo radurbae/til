@@ -31,6 +31,16 @@
     margin-bottom: var(--space-sm);
 }
 
+.language {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.45rem;
+    line-height: 1.2;
+}
+
 .category {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -338,6 +348,10 @@
     }
 
     .postStats {
+        font-size: 0.8125rem;
+    }
+
+    .language {
         font-size: 0.8125rem;
     }
 
