@@ -31,7 +31,8 @@
 
 /* Grid Section */
 .section {
-    padding: var(--space-lg) 0;
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
 }
 
 .sectionHeader {
@@ -91,7 +92,7 @@
     }
 
     .heroContent {
-        padding: 0;
+        padding: 0 2rem;
     }
 
     .heroTitle {
@@ -102,9 +103,11 @@
         font-size: 0.875rem;
     }
 
+    .section,
     .sectionHeader,
     .grid,
     .footer {
-        padding: 0;
+        padding: var(--space-md) 2rem;
+        margin-top: var(--space-md);
     }
 }
