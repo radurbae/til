@@ -6,6 +6,21 @@ import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
 import { useCallback, useEffect } from 'react';
 import styles from './RichTextEditor.module.css';
+import { 
+    Bold, 
+    Italic, 
+    Code, 
+    List, 
+    ListOrdered, 
+    Quote, 
+    Link as LinkIcon, 
+    Minus, 
+    Undo, 
+    Redo, 
+    Heading1, 
+    Heading2, 
+    Heading3 
+} from 'lucide-react';
 
 interface RichTextEditorProps {
     content: string;
@@ -162,6 +177,7 @@ function ToolbarButton({ onClick, isActive, disabled, children, title }: Toolbar
 
 export default function RichTextEditor({ content, onChange, placeholder = 'Mulai menulis...' }: RichTextEditorProps) {
     const editor = useEditor({
+        immediatelyRender: false,
         extensions: [
             StarterKit.configure({
                 heading: {
@@ -224,6 +240,10 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
         return <div className={styles.loading}>Loading editor...</div>;
     }
 
+
+
+// ... (keep ToolbarButtonProps and ToolbarButton)
+
     return (
         <div className={styles.editor}>
             <div className={styles.toolbar}>
@@ -233,21 +253,21 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
                         isActive={editor.isActive('heading', { level: 1 })}
                         title="Heading 1"
                     >
-                        H1
+                        <Heading1 size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
                         isActive={editor.isActive('heading', { level: 2 })}
                         title="Heading 2"
                     >
-                        H2
+                        <Heading2 size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
                         isActive={editor.isActive('heading', { level: 3 })}
                         title="Heading 3"
                     >
-                        H3
+                        <Heading3 size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                 </div>
 
@@ -259,21 +279,21 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
                         isActive={editor.isActive('bold')}
                         title="Bold (Ctrl+B)"
                     >
-                        <strong>B</strong>
+                        <Bold size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleItalic().run()}
                         isActive={editor.isActive('italic')}
                         title="Italic (Ctrl+I)"
                     >
-                        <em>I</em>
+                        <Italic size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleCode().run()}
                         isActive={editor.isActive('code')}
                         title="Inline Code"
                     >
-                        {'</>'}
+                        <Code size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                 </div>
 
@@ -285,21 +305,21 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
                         isActive={editor.isActive('bulletList')}
                         title="Bullet List"
                     >
-                        •
+                        <List size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleOrderedList().run()}
                         isActive={editor.isActive('orderedList')}
                         title="Numbered List"
                     >
-                        1.
+                        <ListOrdered size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().toggleBlockquote().run()}
                         isActive={editor.isActive('blockquote')}
                         title="Quote"
                     >
-                        "
+                        <Quote size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                 </div>
 
@@ -311,13 +331,13 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
                         isActive={editor.isActive('link')}
                         title="Add Link"
                     >
-                        🔗
+                        <LinkIcon size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().setHorizontalRule().run()}
                         title="Horizontal Rule"
                     >
-                        —
+                        <Minus size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                 </div>
 
@@ -329,14 +349,14 @@ export default function RichTextEditor({ content, onChange, placeholder = 'Mulai
                         disabled={!editor.can().undo()}
                         title="Undo (Ctrl+Z)"
                     >
-                        ↩
+                        <Undo size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                     <ToolbarButton
                         onClick={() => editor.chain().focus().redo().run()}
                         disabled={!editor.can().redo()}
                         title="Redo (Ctrl+Y)"
                     >
-                        ↪
+                        <Redo size={18} strokeWidth={1.5} />
                     </ToolbarButton>
                 </div>
             </div>

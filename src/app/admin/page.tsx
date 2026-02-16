@@ -12,6 +12,23 @@ const RichTextEditor = dynamic(
     { ssr: false, loading: () => <div style={{ padding: '1rem', color: '#666' }}>Loading editor...</div> }
 );
 
+import {
+    LayoutDashboard,
+    FileText,
+    Folder,
+    Tags,
+    PenSquare,
+    List,
+    Save,
+    Edit,
+    Trash2,
+    LogOut,
+    Lock,
+    AlertTriangle,
+    X,
+    Check
+} from "lucide-react";
+
 interface Article {
     slug: string;
     sha: string;
@@ -32,8 +49,7 @@ interface Tag {
     count: number;
 }
 
-type MainTab = "articles" | "categories" | "tags";
-type ArticleSubTab = "create" | "manage";
+type MainTab = "write" | "manage-articles" | "categories" | "tags";
 
 export default function AdminPage() {
     // Auth state
@@ -43,8 +59,7 @@ export default function AdminPage() {
     const [isLoggingIn, setIsLoggingIn] = useState(false);
 
     // Navigation state
-    const [mainTab, setMainTab] = useState<MainTab>("articles");
-    const [articleSubTab, setArticleSubTab] = useState<ArticleSubTab>("create");
+    const [mainTab, setMainTab] = useState<MainTab>("write");
 
     // Article form state
     const [title, setTitle] = useState("");
@@ -130,10 +145,10 @@ export default function AdminPage() {
 
     // Effects for fetching data
     useEffect(() => {
-        if (isLoggedIn && mainTab === "articles" && articleSubTab === "manage") {
+        if (isLoggedIn && mainTab === "manage-articles") {
             fetchArticles();
         }
-    }, [isLoggedIn, mainTab, articleSubTab, fetchArticles]);
+    }, [isLoggedIn, mainTab, fetchArticles]);
 
     useEffect(() => {
         if (isLoggedIn && mainTab === "categories") {
@@ -409,7 +424,10 @@ export default function AdminPage() {
                 <main className={styles.main}>
                     <div className={`container ${styles.loginContainer}`}>
                         <div className={styles.loginBox}>
-                            <h1 className={styles.loginTitle}>🔐 Admin Login</h1>
+                            <div className={styles.loginHeader}>
+                                <Lock size={48} strokeWidth={1.5} className={styles.loginIcon} />
+                                <h1 className={styles.loginTitle}>Admin Login</h1>
+                            </div>
                             <p className={styles.loginSubtitle}>
                                 Masukkan password untuk mengakses halaman admin
                             </p>
@@ -459,30 +477,35 @@ export default function AdminPage() {
                 <div className={`container ${styles.dashboard}`}>
                     {/* Header */}
                     <div className={styles.dashboardHeader}>
-                        <Link href="/" className={styles.backLink}>← Back</Link>
-                        <h1 className={styles.dashboardTitle}>📊 Admin Dashboard</h1>
+                        <Link href="/" className={styles.backLink}>
+                            <span>Back to Home</span>
+                        </Link>
+                        <h1 className={styles.dashboardTitle}>
+                            <span>Admin Dashboard</span>
+                        </h1>
                     </div>
 
                     {/* Main Tabs */}
                     <div className={styles.tabsContainer}>
                         <button
-                            className={`${styles.tab} ${mainTab === "articles" ? styles.tabActive : ""}`}
-                            onClick={() => setMainTab("articles")}
+                            className={`${styles.tab} ${mainTab === "write" ? styles.tabActive : ""}`}
+                            onClick={() => { setMainTab("write"); setEditingArticle(null); }}
                         >
-                            📝 Artikel
+                            <span>Tulis Baru</span>
+                        </button>
+                        <button
+                            className={`${styles.tab} ${mainTab === "manage-articles" ? styles.tabActive : ""}`}
+                            onClick={() => setMainTab("manage-articles")}
+                        >
+                            <span>Kelola Artikel</span>
                         </button>
                         <button
                             className={`${styles.tab} ${mainTab === "categories" ? styles.tabActive : ""}`}
                             onClick={() => setMainTab("categories")}
                         >
-                            📁 Kategori
+                            <span>Kategori</span>
                         </button>
-                        <button
-                            className={`${styles.tab} ${mainTab === "tags" ? styles.tabActive : ""}`}
-                            onClick={() => setMainTab("tags")}
-                        >
-                            🏷️ Tags
-                        </button>
+
                     </div>
 
                     {/* Message Display */}
@@ -490,27 +513,9 @@ export default function AdminPage() {
                         <div className={styles.message}>{message}</div>
                     )}
 
-                    {/* Articles Tab */}
-                    {mainTab === "articles" && (
+                    {/* Write Tab */}
+                    {mainTab === "write" && !editingArticle && (
                         <div className={styles.tabContent}>
-                            {/* Sub Tabs */}
-                            <div className={styles.subTabsContainer}>
-                                <button
-                                    className={`${styles.subTab} ${articleSubTab === "create" ? styles.subTabActive : ""}`}
-                                    onClick={() => { setArticleSubTab("create"); setEditingArticle(null); }}
-                                >
-                                    ✏️ Tulis Baru
-                                </button>
-                                <button
-                                    className={`${styles.subTab} ${articleSubTab === "manage" ? styles.subTabActive : ""}`}
-                                    onClick={() => setArticleSubTab("manage")}
-                                >
-                                    📋 Kelola Artikel
-                                </button>
-                            </div>
-
-                            {/* Create Form */}
-                            {articleSubTab === "create" && !editingArticle && (
                                 <form onSubmit={handleCreate} className={styles.form}>
                                     <div className={styles.field}>
                                         <label htmlFor="title">Judul</label>
@@ -565,12 +570,14 @@ export default function AdminPage() {
                                         className={styles.submit}
                                         disabled={isLoading}
                                     >
-                                        {isLoading ? "Menyimpan..." : "💾 Simpan & Publish"}
+                                        <Save size={18} strokeWidth={1.5} />
+                                        {isLoading ? "Menyimpan..." : "Simpan & Publish"}
                                     </button>
                                 </form>
-                            )}
+                            </div>
+                    )}
 
-                            {/* Edit Form */}
+                            {/* Edit Form - Show regardless of tab if editing */}
                             {editingArticle && (
                                 <form onSubmit={handleUpdate} className={styles.form}>
                                     <div className={styles.editHeader}>
@@ -580,7 +587,8 @@ export default function AdminPage() {
                                             className={styles.cancelButton}
                                             onClick={() => setEditingArticle(null)}
                                         >
-                                            ✕ Batal
+                                            <X size={16} strokeWidth={1.5} />
+                                            <span>Batal</span>
                                         </button>
                                     </div>
 
@@ -634,13 +642,14 @@ export default function AdminPage() {
                                         className={styles.submit}
                                         disabled={isLoading}
                                     >
-                                        {isLoading ? "Menyimpan..." : "💾 Update Artikel"}
+                                        <Save size={18} strokeWidth={1.5} />
+                                        {isLoading ? "Menyimpan..." : "Update Artikel"}
                                     </button>
                                 </form>
                             )}
 
                             {/* Article List */}
-                            {articleSubTab === "manage" && !editingArticle && (
+                            {mainTab === "manage-articles" && !editingArticle && (
                                 <div className={styles.articleList}>
                                     {isLoadingArticles ? (
                                         <div className={styles.loading}>Memuat artikel...</div>
@@ -667,15 +676,20 @@ export default function AdminPage() {
                                                         <td className={styles.actionsCell}>
                                                             <button
                                                                 className={styles.editButton}
-                                                                onClick={() => handleEdit(article)}
+                                                                onClick={() => {
+                                                                    handleEdit(article);
+                                                                    // We don't need to change tab, editingArticle overrides view
+                                                                }}
+                                                                title="Edit"
                                                             >
-                                                                ✏️ Edit
+                                                                <Edit size={16} strokeWidth={1.5} />
                                                             </button>
                                                             <button
                                                                 className={styles.deleteButton}
                                                                 onClick={() => setDeleteConfirm(article)}
+                                                                title="Hapus"
                                                             >
-                                                                🗑️ Hapus
+                                                                <Trash2 size={16} strokeWidth={1.5} />
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -685,14 +699,14 @@ export default function AdminPage() {
                                     )}
                                 </div>
                             )}
-                        </div>
-                    )}
+
 
                     {/* Categories Tab */}
                     {mainTab === "categories" && (
                         <div className={styles.tabContent}>
                             <div className={styles.infoBox}>
-                                ℹ️ Klik tombol Edit atau Hapus untuk mengelola kategori di semua artikel.
+                                <div className={styles.infoIcon}><AlertTriangle size={20} strokeWidth={1.5} /></div>
+                                <div>Klik tombol Edit atau Hapus untuk mengelola kategori di semua artikel.</div>
                             </div>
                             {isLoadingCategories ? (
                                 <div className={styles.loading}>Memuat kategori...</div>
@@ -709,14 +723,16 @@ export default function AdminPage() {
                                                 <button
                                                     className={styles.editButton}
                                                     onClick={() => { setEditingCategory(cat); setNewCategoryName(cat.name); }}
+                                                    title="Edit"
                                                 >
-                                                    ✏️
+                                                    <Edit size={16} strokeWidth={1.5} />
                                                 </button>
                                                 <button
                                                     className={styles.deleteButton}
                                                     onClick={() => setDeleteCategoryConfirm(cat)}
+                                                    title="Hapus"
                                                 >
-                                                    🗑️
+                                                    <Trash2 size={16} strokeWidth={1.5} />
                                                 </button>
                                             </div>
                                         </div>
@@ -726,40 +742,7 @@ export default function AdminPage() {
                         </div>
                     )}
 
-                    {/* Tags Tab */}
-                    {mainTab === "tags" && (
-                        <div className={styles.tabContent}>
-                            <div className={styles.infoBox}>
-                                ℹ️ Klik tombol Edit atau Hapus pada tag untuk mengelolanya di semua artikel.
-                            </div>
-                            {isLoadingTags ? (
-                                <div className={styles.loading}>Memuat tags...</div>
-                            ) : tagsData.length === 0 ? (
-                                <div className={styles.emptyState}>Belum ada tags</div>
-                            ) : (
-                                <div className={styles.tagCloud}>
-                                    {tagsData.map((tag) => (
-                                        <span key={tag.name} className={styles.tagItemManage}>
-                                            <span className={styles.tagName}>{tag.name}</span>
-                                            <span className={styles.tagCount}>{tag.count}</span>
-                                            <button
-                                                className={styles.tagEditBtn}
-                                                onClick={() => { setEditingTag(tag); setNewTagName(tag.name); }}
-                                            >
-                                                ✏️
-                                            </button>
-                                            <button
-                                                className={styles.tagDeleteBtn}
-                                                onClick={() => setDeleteTagConfirm(tag)}
-                                            >
-                                                ✕
-                                            </button>
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
+
 
                     {/* Info Box */}
                     <div className={styles.info}>
@@ -775,7 +758,10 @@ export default function AdminPage() {
                 {deleteConfirm && (
                     <div className={styles.modalOverlay}>
                         <div className={styles.modal}>
-                            <h3>⚠️ Konfirmasi Hapus</h3>
+                            <div className={styles.modalHeader}>
+                                <AlertTriangle size={32} strokeWidth={1.5} className={styles.warningIcon} />
+                                <h3>Konfirmasi Hapus</h3>
+                            </div>
                             <p>Apakah Anda yakin ingin menghapus artikel:</p>
                             <p className={styles.modalTitle}>&ldquo;{deleteConfirm.title}&rdquo;</p>
                             <p className={styles.modalWarning}>Tindakan ini tidak dapat dibatalkan!</p>
