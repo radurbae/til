@@ -1,9 +1,9 @@
 import Header from "@/components/Header/Header";
 import TextSelectionHandler from "@/components/TextSelectionHandler/TextSelectionHandler";
-import { parseMarkdown } from "@/lib/markdown";
 import { getTilBySlug, getAllSlugs } from "@/lib/til";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 import PostStats from "./PostStats";
 import CommentSection from "./CommentSection";
 import styles from "./page.module.css";
@@ -43,7 +43,6 @@ export default async function TilPage({
         notFound();
     }
 
-    const htmlContent = parseMarkdown(til.content);
     const wordCount = til.content.trim().split(/\s+/).filter(Boolean).length;
     const readTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
 
@@ -77,10 +76,17 @@ export default async function TilPage({
                             </div>
                         )}
                     </header>
-                    <div
-                        className={styles.content}
-                        dangerouslySetInnerHTML={{ __html: htmlContent }}
-                    />
+                    <div className={styles.content}>
+                        <ReactMarkdown
+                            components={{
+                                a: ({ ...props }) => (
+                                    <a {...props} target="_blank" rel="noopener noreferrer" />
+                                ),
+                            }}
+                        >
+                            {til.content}
+                        </ReactMarkdown>
+                    </div>
                     <CommentSection slug={til.slug} />
                 </article>
             </main>
