@@ -149,3 +149,32 @@ export function getAllSlugs(): string[] {
         .filter((fileName) => fileName.endsWith(".md"))
         .map((fileName) => fileName.replace(/\.md$/, ""));
 }
+
+export function getAllTilDates(): string[] {
+    if (!fs.existsSync(contentDirectory)) {
+        return [];
+    }
+
+    const fileNames = fs.readdirSync(contentDirectory);
+    const dates = fileNames
+        .filter((fileName) => fileName.endsWith(".md"))
+        .map((fileName) => {
+            const fullPath = path.join(contentDirectory, fileName);
+            const fileContents = fs.readFileSync(fullPath, "utf8");
+            const { data } = matter(fileContents);
+            if (data.date) {
+                const dateObj = new Date(data.date);
+                if (!isNaN(dateObj.getTime())) {
+                    const year = dateObj.getFullYear();
+                    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+                    const day = String(dateObj.getDate()).padStart(2, "0");
+                    return `${year}-${month}-${day}`;
+                }
+            }
+            return null;
+        })
+        .filter((date): date is string => date !== null);
+
+    return Array.from(new Set(dates)).sort();
+}
+

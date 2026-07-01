@@ -1,10 +1,12 @@
 import Header from "@/components/Header/Header";
 import TilList, { TilListItem } from "@/components/TilList/TilList";
-import { getAllTils } from "@/lib/til";
+import { getAllTils, getAllTilDates } from "@/lib/til";
+import WritingStreak from "@/components/WritingStreak/WritingStreak";
 import styles from "./page.module.css";
 
 export default function Home() {
     const tils = getAllTils();
+    const dates = getAllTilDates();
     const tilItems: TilListItem[] = tils.map((til) => ({
         slug: til.slug,
         title: til.title,
@@ -28,6 +30,8 @@ export default function Home() {
                     </div>
                 </section>
 
+                <WritingStreak dates={dates} />
+
                 <section className={`container ${styles.section}`}>
                     <div className={styles.sectionHeader}>
                         <h2 className={styles.sectionTitle}>Recent</h2>
@@ -44,3 +48,4 @@ export default function Home() {
         </>
     );
 }
+
