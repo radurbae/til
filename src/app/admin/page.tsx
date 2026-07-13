@@ -26,7 +26,9 @@ import {
     Lock,
     AlertTriangle,
     X,
-    Check
+    Check,
+    BookOpen,
+    Plus
 } from "lucide-react";
 
 interface Article {
@@ -49,7 +51,16 @@ interface Tag {
     count: number;
 }
 
-type MainTab = "write" | "manage-articles" | "categories" | "tags";
+interface PrivateNote {
+    slug: string;
+    sha: string;
+    title: string;
+    date: string;
+    mood: string;
+    content?: string;
+}
+
+type MainTab = "write" | "manage-articles" | "categories" | "private-notes";
 
 export default function AdminPage() {
     // Auth state
@@ -88,6 +99,16 @@ export default function AdminPage() {
     const [deleteTagConfirm, setDeleteTagConfirm] = useState<Tag | null>(null);
     const [newCategoryName, setNewCategoryName] = useState("");
     const [newTagName, setNewTagName] = useState("");
+
+    // Private notes state
+    const [notes, setNotes] = useState<PrivateNote[]>([]);
+    const [isLoadingNotes, setIsLoadingNotes] = useState(false);
+    const [isWritingNote, setIsWritingNote] = useState(false);
+    const [editingNote, setEditingNote] = useState<PrivateNote | null>(null);
+    const [deleteNoteConfirm, setDeleteNoteConfirm] = useState<PrivateNote | null>(null);
+    const [noteTitle, setNoteTitle] = useState("");
+    const [noteMood, setNoteMood] = useState("");
+    const [noteContent, setNoteContent] = useState("");
 
     // Fetch articles
     const fetchArticles = useCallback(async () => {
@@ -143,6 +164,24 @@ export default function AdminPage() {
         }
     }, [password]);
 
+    // Fetch private notes
+    const fetchNotes = useCallback(async () => {
+        setIsLoadingNotes(true);
+        try {
+            const response = await fetch("/api/admin/private", {
+                headers: { "x-admin-password": password },
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setNotes(data.notes || []);
+            }
+        } catch (error) {
+            console.error("Failed to fetch private notes:", error);
+        } finally {
+            setIsLoadingNotes(false);
+        }
+    }, [password]);
+
     // Effects for fetching data
     useEffect(() => {
         if (isLoggedIn && mainTab === "manage-articles") {
@@ -156,11 +195,12 @@ export default function AdminPage() {
         }
     }, [isLoggedIn, mainTab, fetchCategories]);
 
+
     useEffect(() => {
-        if (isLoggedIn && mainTab === "tags") {
-            fetchTags();
+        if (isLoggedIn && mainTab === "private-notes") {
+            fetchNotes();
         }
-    }, [isLoggedIn, mainTab, fetchTags]);
+    }, [isLoggedIn, mainTab, fetchNotes]);
 
     // Login handler
     const handleLogin = async (e: React.FormEvent) => {
@@ -416,6 +456,121 @@ export default function AdminPage() {
         }
     };
 
+    // Create private note handler
+    const handleCreateNote = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setMessage("");
+        try {
+            const response = await fetch("/api/admin/private", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title: noteTitle,
+                    mood: noteMood,
+                    content: noteContent,
+                    password,
+                }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setMessage(`✅ ${data.message}`);
+                setNoteTitle("");
+                setNoteMood("");
+                setNoteContent("");
+                setIsWritingNote(false);
+                fetchNotes();
+            } else {
+                setMessage(`❌ Error: ${data.error}`);
+            }
+        } catch {
+            setMessage("❌ Gagal menyimpan catatan");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Open note for editing
+    const handleEditNote = async (note: PrivateNote) => {
+        try {
+            const response = await fetch(`/api/admin/private/${note.slug}`, {
+                headers: { "x-admin-password": password },
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setEditingNote({ ...note, content: data.content });
+                setNoteTitle(data.title);
+                setNoteMood(data.mood || "");
+                setNoteContent(data.content || "");
+                setIsWritingNote(true);
+            }
+        } catch (error) {
+            console.error("Failed to fetch note:", error);
+        }
+    };
+
+    // Update private note handler
+    const handleUpdateNote = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!editingNote) return;
+        setIsLoading(true);
+        setMessage("");
+        try {
+            const response = await fetch(`/api/admin/private/${editingNote.slug}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title: noteTitle,
+                    mood: noteMood,
+                    content: noteContent,
+                    password,
+                    sha: editingNote.sha,
+                }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setMessage(`✅ ${data.message}`);
+                setEditingNote(null);
+                setNoteTitle("");
+                setNoteMood("");
+                setNoteContent("");
+                setIsWritingNote(false);
+                fetchNotes();
+            } else {
+                setMessage(`❌ Error: ${data.error}`);
+            }
+        } catch {
+            setMessage("❌ Gagal memperbarui catatan");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Delete private note handler
+    const handleDeleteNote = async () => {
+        if (!deleteNoteConfirm) return;
+        setIsLoading(true);
+        try {
+            const response = await fetch(`/api/admin/private/${deleteNoteConfirm.slug}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password, sha: deleteNoteConfirm.sha }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setMessage(`✅ ${data.message}`);
+                setDeleteNoteConfirm(null);
+                fetchNotes();
+            } else {
+                setMessage(`❌ Error: ${data.error}`);
+            }
+        } catch {
+            setMessage("❌ Gagal menghapus catatan");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     // Login Screen
     if (!isLoggedIn) {
         return (
@@ -504,6 +659,12 @@ export default function AdminPage() {
                             onClick={() => setMainTab("categories")}
                         >
                             <span>Kategori</span>
+                        </button>
+                        <button
+                            className={`${styles.tab} ${styles.privateTab} ${mainTab === "private-notes" ? styles.tabActive : ""}`}
+                            onClick={() => { setMainTab("private-notes"); setEditingArticle(null); }}
+                        >
+                            <span>Catatan Pribadi</span>
                         </button>
 
                     </div>
@@ -742,6 +903,150 @@ export default function AdminPage() {
                         </div>
                     )}
 
+                    {/* Private Notes Tab */}
+                    {mainTab === "private-notes" && !editingArticle && (
+                        <div className={styles.tabContent}>
+                            {/* Private area banner */}
+                            <div className={styles.privateHeader}>
+                                <div className={styles.privateHeaderIcon}>📔</div>
+                                <div className={styles.privateHeaderText}>
+                                    <h2>Catatan Pribadi</h2>
+                                    <p>Tersimpan di folder private — tidak pernah tampil di halaman publik</p>
+                                </div>
+                            </div>
+
+                            {/* Form: Write / Edit Note */}
+                            {isWritingNote ? (
+                                <form onSubmit={editingNote ? handleUpdateNote : handleCreateNote} className={styles.form}>
+                                    <div className={styles.noteFormHeader}>
+                                        <h3>{editingNote ? "✏️ Edit Catatan" : "✍️ Catatan Baru"}</h3>
+                                        <button
+                                            type="button"
+                                            className={styles.cancelButton}
+                                            onClick={() => {
+                                                setIsWritingNote(false);
+                                                setEditingNote(null);
+                                                setNoteTitle("");
+                                                setNoteMood("");
+                                                setNoteContent("");
+                                            }}
+                                        >
+                                            <X size={14} strokeWidth={1.5} />
+                                            <span>Batal</span>
+                                        </button>
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label htmlFor="noteTitle">Judul</label>
+                                        <input
+                                            type="text"
+                                            id="noteTitle"
+                                            value={noteTitle}
+                                            onChange={(e) => setNoteTitle(e.target.value)}
+                                            placeholder="Judul catatan..."
+                                            required
+                                            autoFocus
+                                        />
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label>Mood</label>
+                                        <div className={styles.moodSelector}>
+                                            {["😊 Senang", "😌 Tenang", "🤔 Bingung", "😤 Frustrasi", "😔 Sedih", "🔥 Semangat", "💡 Insight", "😴 Lelah"].map((m) => (
+                                                <button
+                                                    key={m}
+                                                    type="button"
+                                                    className={`${styles.moodOption} ${noteMood === m ? styles.moodOptionActive : ""}`}
+                                                    onClick={() => setNoteMood(noteMood === m ? "" : m)}
+                                                >
+                                                    {m}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.field}>
+                                        <label>Isi Catatan</label>
+                                        <RichTextEditor
+                                            content={noteContent}
+                                            onChange={setNoteContent}
+                                            placeholder="Tulis apa saja di sini..."
+                                        />
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className={styles.submitNote}
+                                        disabled={isLoading}
+                                    >
+                                        <Save size={18} strokeWidth={1.5} />
+                                        {isLoading ? "Menyimpan..." : (editingNote ? "Perbarui Catatan" : "Simpan Catatan")}
+                                    </button>
+                                </form>
+                            ) : (
+                                /* Note List */
+                                <div>
+                                    <div className={styles.noteFormHeader}>
+                                        <h3>📋 Semua Catatan ({notes.length})</h3>
+                                        <button
+                                            className={styles.newNoteButton}
+                                            onClick={() => {
+                                                setIsWritingNote(true);
+                                                setEditingNote(null);
+                                                setNoteTitle("");
+                                                setNoteMood("");
+                                                setNoteContent("");
+                                            }}
+                                        >
+                                            <Plus size={14} strokeWidth={1.5} />
+                                            Tulis Catatan Baru
+                                        </button>
+                                    </div>
+
+                                    {isLoadingNotes ? (
+                                        <div className={styles.loading}>Memuat catatan...</div>
+                                    ) : notes.length === 0 ? (
+                                        <div className={styles.emptyState}>
+                                            <p>Belum ada catatan pribadi.</p>
+                                            <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>Klik "Tulis Catatan Baru" untuk mulai.</p>
+                                        </div>
+                                    ) : (
+                                        <div className={styles.noteList}>
+                                            {notes.map((note) => (
+                                                <div key={note.slug} className={styles.noteCard}>
+                                                    <div className={styles.noteCardLeft}>
+                                                        <div className={styles.noteCardTitle}>{note.title}</div>
+                                                        <div className={styles.noteCardMeta}>
+                                                            <span>{note.date}</span>
+                                                            {note.mood && (
+                                                                <span className={styles.moodBadge}>{note.mood}</span>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <div className={styles.noteCardActions}>
+                                                        <button
+                                                            className={styles.editButton}
+                                                            onClick={() => handleEditNote(note)}
+                                                            title="Edit"
+                                                        >
+                                                            <Edit size={16} strokeWidth={1.5} />
+                                                        </button>
+                                                        <button
+                                                            className={styles.deleteButton}
+                                                            onClick={() => setDeleteNoteConfirm(note)}
+                                                            title="Hapus"
+                                                        >
+                                                            <Trash2 size={16} strokeWidth={1.5} />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    )}
 
 
                     {/* Info Box */}
@@ -895,6 +1200,35 @@ export default function AdminPage() {
                                 <button
                                     className={styles.confirmDeleteButton}
                                     onClick={handleDeleteTag}
+                                    disabled={isLoading}
+                                >
+                                    {isLoading ? "Menghapus..." : "Ya, Hapus"}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {/* Delete Note Confirmation Modal */}
+                {deleteNoteConfirm && (
+                    <div className={styles.modalOverlay}>
+                        <div className={styles.modal}>
+                            <div className={styles.modalHeader}>
+                                <AlertTriangle size={32} strokeWidth={1.5} className={styles.warningIcon} />
+                                <h3>Hapus Catatan?</h3>
+                            </div>
+                            <p>Apakah kamu yakin ingin menghapus:</p>
+                            <p className={styles.modalTitle}>&ldquo;{deleteNoteConfirm.title}&rdquo;</p>
+                            <p className={styles.modalWarning}>Tindakan ini tidak dapat dibatalkan!</p>
+                            <div className={styles.modalActions}>
+                                <button
+                                    className={styles.cancelButton}
+                                    onClick={() => setDeleteNoteConfirm(null)}
+                                >
+                                    Batal
+                                </button>
+                                <button
+                                    className={styles.confirmDeleteButton}
+                                    onClick={handleDeleteNote}
                                     disabled={isLoading}
                                 >
                                     {isLoading ? "Menghapus..." : "Ya, Hapus"}

@@ -611,6 +611,254 @@
     cursor: not-allowed;
 }
 
+/* =====================
+   Private Notes / Diary
+   ===================== */
+
+.privateTab {
+    position: relative;
+}
+
+.privateTab::after {
+    content: '🔒';
+    font-size: 0.6rem;
+    position: absolute;
+    top: 4px;
+    right: -2px;
+}
+
+.privateHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(180, 83, 9, 0.05) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+}
+
+.privateHeader h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #92400e;
+    margin: 0;
+}
+
+.privateHeader p {
+    font-size: 0.8125rem;
+    color: #b45309;
+    margin: 0;
+}
+
+.privateHeaderText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.privateHeaderIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Note list */
+.noteList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.noteCard {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.noteCard:hover {
+    border-color: rgba(217, 119, 6, 0.3);
+    background: rgba(217, 119, 6, 0.03);
+}
+
+.noteCardLeft {
+    flex: 1;
+    min-width: 0;
+}
+
+.noteCardTitle {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.noteCardMeta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.moodBadge {
+    display: inline-block;
+    padding: 1px 8px;
+    font-size: 0.75rem;
+    background: rgba(217, 119, 6, 0.1);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+    border-radius: 9999px;
+    color: #92400e;
+}
+
+.noteCardActions {
+    display: flex;
+    gap: var(--space-xs);
+    flex-shrink: 0;
+}
+
+/* Note form */
+.noteFormHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(180, 83, 9, 0.05) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+}
+
+.noteFormHeader h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #92400e;
+    margin: 0;
+}
+
+.newNoteButton {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: rgba(217, 119, 6, 0.15);
+    color: #92400e;
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.newNoteButton:hover {
+    background: rgba(217, 119, 6, 0.25);
+}
+
+.submitNote {
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.submitNote:hover {
+    opacity: 0.85;
+}
+
+.submitNote:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Mood selector */
+.moodSelector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+}
+
+.moodOption {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+}
+
+.moodOption:hover {
+    border-color: rgba(217, 119, 6, 0.4);
+    background: rgba(217, 119, 6, 0.05);
+}
+
+.moodOptionActive {
+    background: rgba(217, 119, 6, 0.15);
+    border-color: rgba(217, 119, 6, 0.4);
+    color: #92400e;
+    font-weight: 600;
+}
+
+/* Private note view */
+.noteViewContainer {
+    border: 1px solid rgba(217, 119, 6, 0.2);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.noteViewHeader {
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(180, 83, 9, 0.05) 100%);
+    border-bottom: 1px solid rgba(217, 119, 6, 0.15);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.noteViewTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xs);
+}
+
+.noteViewMeta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.noteViewContent {
+    padding: var(--space-xl);
+    line-height: 1.8;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    min-height: 200px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 640px) {
     .row {
